@@ -4,17 +4,19 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'g++ mvn clean package'
+                sh 'g++ -o PES1UG20CS808-1 PES1UG20CS808-1.cpp'
             }
         }
+
         stage('Test') {
             steps {
-                sh 'g++ mvn test'
+                sh './PES1UG20CS808-1'
             }
         }
+
         stage('Deploy') {
             steps {
-                sh 'g++ deploy_script.sh'
+                echo 'deployed successfully'
             }
         }
     }
@@ -23,9 +25,9 @@ pipeline {
         always {
             script {
                 if (currentBuild.result == 'FAILURE') {
-                    echo 'Pipeline failed'
+                    echo 'pipeline failed'
                 }
             }
         }
     }
-}
+}c
