@@ -4,17 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                sh 'g++ mvn clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'g++ mvn test'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'deploy_script.sh'
+                sh 'g++ deploy_script.sh'
             }
         }
     }
